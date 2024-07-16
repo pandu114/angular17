@@ -1,0 +1,413 @@
+Installation 
+----------------
+node -v
+
+npm -v
+
+npm install -g @angular/cli@17
+
+ng version
+
+ng new project_name
+
+Folder Structure explained in details with notes
+
+1. parent folder will be the main project folder.
+2. .angular -> ignore this folder
+3. .vscode  -> ignore this folder
+4. node_moules 
+	-> packages will be installed here in this folder 
+	-> You don't have to go through these folders / files.
+	-> Unless youare making changes to core libraries/modules
+	-> npm install or ng add -> you would see the packages the here
+5. .editorconfig -> ignore for now
+		-> make your custom editor changes in this file.
+6. .gitignore 
+	->we can add folder/files that we need to ignore while commiting 
+	-> node_modules
+7.angular.json
+	-> configuring your styles, js or for pipeline deployment.
+	-> settings specific  to your projects
+8.package.json
+	->the installed dependencies of the project
+	->when we run npm install inside the project
+	->the modules listed will be installed
+9.package-lock.json
+	->same details of package.json + dev dependencies browken down in details
+	->Don't touch this manually
+10.tsconfig.app.json
+	-> tells you the typescript configuration for your projects
+	-> don't tuch it for dev purpose
+11.tsconfig.spec.json
+	->typescript test specific configuration
+12.ReadMe.md
+	-> Starting file - docummentation of your project
+13.SRC  -> this is source code of project
+	app	
+		-> this is your actual code of your project/application
+		->Every component in Angular
+			->has 4 files
+				-> .html  -> template
+				-> .scss/.css/.less ->style 
+				-> .spec.ts -> unit test file
+				-> .ts -> component class / logical piece of component
+		-> app.component.ts 
+			->selector -> app-root
+		-> app.component.spec.ts
+			-> Unit testing
+			->jasmine - writing the unit tests
+			->karma  - test runner
+	assets
+	->use this folder to serve the assets which are public
+		->images
+		-fonts
+		->videos
+		->js static
+	favicon
+		-> in the browser icon 
+	index.html
+		-> Angular is single page application (SPA)
+		-> there is only one html file
+		->when we develop / build the app -> the index.html 
+			<app-root>
+				starting point of the project(first component to be initialized)
+	main.ts
+		->Entry point to your project
+		->which is the first component to be rendered in your project
+	styles.scss
+		-> .css/ .less/ .scss -> extensions of CSS
+		-> Global styling for your project
+
+Angular CLI Commands
+
+	1.ng version      - gives you details of project -> packages, version, name etc..
+	2.ng new <project_name>  - will create new project
+	3.ng generate -> generates the required project components/modules etc
+		component
+		module
+		service
+		pipe
+		directive
+		routing
+		interface
+		model
+		class
+	4.ng test ->used for running the unit tests
+		-> .spec.ts
+	5.ng serve -> build and launch app locally
+	6.ng build -> when its production ready 
+		-> dist folder
+			index.html
+			styles.css
+			polyfills.js
+			main.js
+		-> make changes to settings in angular.json
+			if needed
+	7.ng add @angular/material
+		-> ng add for adding packages and modules of Angular
+	8.ng upgrade
+		-> update any angular application to other versions using ng update	
+
+	9.ng lint
+		->Linting making sure making typescript is proper
+			-> code syntax
+			-> patterns etc
+
+Angular 17 - Modular Architecture
+-------------------------------------------------------------------------
+	1.No more NgModule
+	2.No more default AppModule ->
+	3.Everything is standalone ->it can be injected and used anywhere
+	4.modules are still very much supported and can be used just like any previous version
+
+Angular 17 - Component in Angular
+------------------------------------
+1.Angular components are declared using @Component decorator
+
+2.@Component decorator can have multiple inputs/parameters
+	->selector 
+		-> its the name which can be used/ refered in application
+	->standalone 
+		->by default all angular applications are standalone
+		->No need to declare inside a module
+		->you can directly use them in the application (any where)
+	->imports:
+		->you will provide all required modules for this component.
+	->templateUrl -> HTML for the component
+	->template -> use when u have limited html
+	->styleUrl ->The CSS or stylesheet for the component
+	->styles -> define inline styling
+3.Component Structure:
+	-<componentName>.component.html -> template/html/unit
+	-<componentName>.component.css/scss ->stylesheet for the component
+	-<componentName>.component.spec.ts -> unit test for the component
+	-<componentName>.component.ts ->class for the component / logic /data/ interaction
+
+4.Angular 17 on words --.By default all components are standalone
+	-> Use them any where in  the application
+	-> No need to inject in amodule
+
+5.Component Data Flow
+	-@Input  -> used for sending data to the component.
+	-@Output -> sending data from the component
+
+6.Components -> Data Binding
+	-> Class -> Template ->Class
+
+7.Components Lifecycle methods:
+	->Right from creation -> [8 stages]-> destroy
+
+Angular 17 - Generate Components:
+-------------------------------------------------------------------
+1. ng generate component <component_name>
+	ex: ng g c crew-members
+	-> in angular 17 -> components are standalone by default
+	-.in previous version -> they are not standalone by default
+
+2. To disable defualt standalone
+	ng g c <component_name> --standalone false
+3.But if your are on any other Angular version < 17
+	-> entry in Module file
+		AppModule
+4.In Angular 17 components are standalone = true by default
+	->They don't need a module
+5.Angular.json ->
+	adding to schematics and disable standalone = false in angular.json
+
+Angular 17 vs Angular 16 and below
+------------------------------------------------
+1. Angular 16 and below used AppModule
+	->Its mandatory to have atleast one module
+	->AppModule
+	->main.ts ->Bootstrap  AppModule
+
+2.Angular 17 onwords 
+	->Every thing is standalone
+	->No mandatory Module is required
+	->No AppModule anymore
+	->BUT we can create our own custom modules
+	->It is backward compatible
+		->Everything that you were doing in Angular 16 is still valid
+	->main.ts ->Bootstrap AppComponent
+	ng g module <module_name>
+
+Angular 17 vs Angular 16 and below - with No AppRoutingModule
+--------------------------------------------------------------
+1.Angular16 and below needs atleast one module
+	AppModule
+	AppRoutingModule
+	The routes were defined in AppRoutingModule and imported into the AppModule
+
+	Importing AppRoutingModule into AppModule
+	AppModule to main.ts
+
+2.Angular 17 onwards 
+	app.routes.ts  ->AppRoutes
+	importing app.routes.ts into app.config.ts files
+
+	AppConfig is sent to -.main.ts
+
+3.Can I still use AppRoutingModule in Angular 17?
+	->yes
+	-> Angular 17 is backward compatible
+
+4.ng g module <module name> --routing
+
+Angular 17 - Standalone Components
+------------------------------------------------
+1. ng generate component <component_name>
+    ng g c <component_name>   -> will create a new floder 
+
+	ng g c <component_name> -- flat 
+2. ng g c <component_name> --standalone false
+	you will need a module mandatory
+
+	ng g m flights
+
+	ng g c crew-desginations --standalone false --module=flights
+
+Angular 17 - How to use components
+------------------------------------
+1. ng g c <component_name.
+
+2.by default each component will have a prefix -> app-<Component_name>
+
+3.unique selector name 
+
+4.two (2) step process
+	4.1 Import the component into the required component
+	4.2 <component_name></component_name>
+
+5. 
+  Cart 
+	Products
+		product1
+			description
+			images
+			rating
+			reviews
+		product 2
+	payment
+		Netbanking
+		Credicard
+
+Angular 17 - Component Communications
+-----------------------------------------------
+Crew -> [parent]
+	Crew-Desginations ->[child]
+
+Angular 17 - AppModule:
+-----------------------------
+1. By default Angular 17 - there is no AppModule
+
+2.Till Angular 16 - it's mandatory to have AppModule
+
+3. In Angular 17 supports modules ->
+	-> we can create our own modules
+	->use just like how we were it earlier
+
+4.In angular 17 - we are bootstraping with AppComponent with Configurations.
+
+5.Till Angular 16 - we are bootstraping with AppModule
+
+Angular 17 - Genarate Modules:
+-----------------------------------------------
+1. ng generate module <module_name>
+
+2.ng g c <component-name> -m users
+
+3.ng g c <component_name> -m users --standalone=false
+
+Angular 17 - How to use Modules & Components
+------------------------------------------------------
+
+
+Angular 17 - Types of modules:
+-------------------------------------------------------
+1.Feature Module;
+	Payments
+	users
+	Crew
+	Airlines
+	Invoices
+2.Shared Module:
+	Header
+	Authentication
+	Authroization
+	Footer
+3.Lazy loading:
+	-ondemand
+	-Home page
+		users
+	-Cart / Checkout page
+		Payment
+
+
+
+Angular 17 - Lazy Loading Modules:
+----------------------------------------------------
+1.Lazy loading module will be loaded only when user goes to that routes
+
+2. Generates Lazy loading module
+	ng generate module <module_name> --routing
+
+3.Inside lazy loading module we can have
+	-standalone components
+	-regular component --standalone false
+
+Angular 17 - Data Binding
+------------------------------------
+1.One Way Data Binding
+	1.1 Interpolation
+		from component class to template(HTML)
+	1.2 Property Binding
+		from component class to template's element's property(attribute)
+	1.3 Event Binding
+		from component(class) to template event
+2.Two Way Data Binding
+	2.1 Data will flow from component(class) to template and back from template to component(class)
+	2.2 you need data from user
+		2.3 Forms
+
+Angular 17 - Interpolation
+---------------------------------------------------
+1.Interpolation is a technique written in between double curly braces  
+	{{}} -> inside template
+2.Data flow from component(class) to tempalte
+
+3.Security check for injections by escaping HTML entities 
+
+
+Angular 17 - Two Way Data Binding:
+-----------------------------------------
+1. two way data binding data flow from component to template and from template to component.
+
+2.[(ngModel)]
+
+3.Import "FormModule" ->mandatory-> if we won't import we will see error
+
+4.We will bind ngModel to all the form fields
+
+
+Angular 17 - Signals
+-------------------------------------------------------------
+1.Signal is reactive primitive to store values
+
+2.We can update/change values in more controlled way
+
+3.Track changes in the signal
+
+4.ng g c signal
+
+5.To define a variable as signal -> signal
+
+6.Assign initial value
+	variableName = signal(<initialValue>)
+
+7.How to print/use the value of a signal
+
+8.How update a value of signal
+	set method to update the new value
+
+9.Computed values of signal
+	use update method  -> to manipulate/compute with current value
+
+10.Effect
+	->User deletes some data -> api call should happen and some logging
+	->Everytime a value of signal is changed -> effect will be triggered
+	->Angular will track all Signals inside the effect
+
+11.Custom Effect -> implement a effect method and call on counter updates
+
+Angular 17 - Custom Directives
+------------------------------------------------------
+1.Custom directives are classes to add custom behavior/functionality to the element
+	ng generate directive <directive_name>
+
+ 
+
+Angular 17 - CRUD Application:
+=====================================
+step1: - Create Angular 17 project
+		ng new crudv17
+
+step2 : - Install bootstrap using CDN 
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+step3 : - Create post module
+		ng generate module post
+
+step4: - Create components for module
+			ng g c post/index
+			ng g c post/create
+			ng g c post/view
+			ng g c post/edit
+
+step5 : - Create routes
+
+Step6 : - Create interface
+			ng g interface post/post
+
+Step7 : - Create Service
+		ng g s post/post

@@ -1,0 +1,879 @@
+ "@angular/material/prebuilt-themes/indigo-pink.css",
+
+Angular--17 Introduction
+========================
+1.Angular framework is developed and maintained by Google.
+2.Angular17 is the latest version of the popular TypeScript-based framework for web development.
+3.One of the key features of Angular 17 is the new loading system, which consists of two main aspects: declarative control flow and deferrable views.
+4.Angular 17 continues to leverage TypeScript, offering improved tooling and developer experience with strong typing.
+5.Further enhancements in the lvy rendering engine for better performance, smaller bundle sizes and faster compilation.
+6.Encouraging best practies, Angular 17 may have strict mode enabled by default in new projects for better maintainability.
+7.Enhanced testing capabilities, potentially including new testing API's and better debugging tools.
+8.Continuation of Angular modular architecture, promoting reusable components and lazy loading for efficient application.
+9.Integration with the latest RxJs library, offering more powerful and efficient reactive projects
+
+
+Complete Framework - End to End Development Batteries included:
+-----------------------------------------------------------------
+Includes::
+===========
+1.Modular Approach
+2.Component Based Architecture
+3.Directives
+4.Routing
+5.Services
+6.Pipes
+7.Templates
+8.Data Binding
+9.Interpolation
+10.Angular CLI
+11.Forms Integration
+12.RxJS Integration
+13.Animations
+14.Singals
+15.Server Side Rendering
+16.HTTP and much more
+
+
+Angular 17 - How to upgrade:
+==============================
+1. Let first update the Angular and modules to version 17
+	ng update @angular/core@17 @angular/cli@17
+2. Also -> please refer to the official guide for Angular 17 upgrade process
+	https://update.angular.io
+	
+Angular 17 - Installation::
+=================================
+1.Verify npm installation 
+	npm -v
+2.Verify node version on system
+	node -v
+3.Download a IDE for Development of your choice(Visual Studio Code)
+4.install Angular via CLI
+	a npm install -g @angular/cli
+	
+	ng version -to find the angular versio
+5.Create a workspace and initial application
+		ng new my-application
+	
+	ng serve --- it's complie the application
+	
+
+Angular 17 - Install Angular Material
+=========================================
+1. install Angular Material via CLI
+	ng add @angular/material
+	reference url::  https://material.angular.io/guide/getting-started
+	
+Angular 17 - Install Bootstrap
+=======================================
+1.Install Bootstrap via terminal
+	npm install bootstrap bootstrap-icons
+2.Update the Angular.json file
+	"styles":[
+		"node_modules/bootstrap/scss/bootstrap.scss",
+		"node_modules/bootstrap-icons/font/bootstrap-icons.scss",
+		"src/styles.scss"
+	]
+	"scripts":[
+		"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+	]
+	
+
+Angular 17 - Folder Structure & Files
+======================================
+Folder Structure explained in details with notes
+
+1. parent folder will be the main project folder.
+2. .angular -> ignore this folder
+3. .vscode  -> ignore this folder
+4. node_moules 
+	-> packages will be installed here in this folder 
+	-> You don't have to go through these folders / files.
+	-> Unless youare making changes to core libraries/modules
+	-> npm install or ng add -> you would see the packages the here
+5. .editorconfig -> ignore for now
+		-> make your custom editor changes in this file.
+6. .gitignore 
+	->we can add folder/files that we need to ignore while commiting 
+	-> node_modules
+7.angular.json
+	-> configuring your styles, js or for pipeline deployment.
+	-> settings specific  to your projects
+8.package.json
+	->the installed dependencies of the project
+	->when we run npm install inside the project
+	->the modules listed will be installed
+9.package-lock.json
+	->same details of package.json + dev dependencies browken down in details
+	->Don't touch this manually
+10.tsconfig.app.json
+	-> tells you the typescript configuration for your projects
+	-> don't tuch it for dev purpose
+11.tsconfig.spec.json
+	->typescript test specific configuration
+12.ReadMe.md
+	-> Starting file - docummentation of your project
+13.SRC  -> this is source code of project
+	app	
+		-> this is your actual code of your project/application
+		->Every component in Angular
+			->has 4 files
+				-> .html  -> template
+				-> .scss/.css/.less ->style 
+				-> .spec.ts -> unit test file
+				-> .ts -> component class / logical piece of component
+		-> app.component.ts 
+			->selector -> app-root
+		-> app.component.spec.ts
+			-> Unit testing
+			->jasmine - writing the unit tests
+			->karma  - test runner
+	assets
+	->use this folder to serve the assets which are public
+		->images
+		-fonts
+		->videos
+		->js static
+	favicon
+		-> in the browser icon 
+	index.html
+		-> Angular is single page application (SPA)
+		-> there is only one html file
+		->when we develop / build the app -> the index.html 
+			<app-root>
+				starting point of the project(first component to be initialized)
+	main.ts
+		->Entry point to your project
+		->which is the first component to be rendered in your project
+	styles.scss
+		-> .css/ .less/ .scss -> extensions of CSS
+		-> Global styling for your project
+		
+	
+Angular 17 - Angular CLI
+========================
+The Angular CLI is a powerful toolset for developing Angular application
+
+It streamlines various tasks such as project creation, configuration, development, testing and deployment
+
+key Features:
+==============
+.Project Initialization: Quickly generates a new Angular project with essential configuration and files
+.Code Generation: Automates the creation of components, services, modules and more, following best practies.
+.Build and Serve: Provides commands to build the application for development or production and serve it locally.
+.Testing Tools:Integrates testing frameworks and tools for unit and end-to-end testing
+
+Common Commands and Synatx
+
+1.Creating a New Project:
+	`ng new project-name`- Initializes a new Angular project.
+	
+2.Generating Components, Services, etc..:
+	- `ng generate component component-name` - Generates a new component.
+	- `ng generate service service-name` - Creates a new service.
+	- `ng generate module module-name` - Generates a new module.
+3.Building the Application:
+	- `ng build` - compiles the application into an output directory.
+	
+4.Running The Development Server:
+	- `ng serve` - Starts a dev server and serves the application on a local host.
+5.Running Tests:
+	- `ng test` - Executes the unit tests via karma
+	- `ng e2e` - Runs end-to-end tests using Protractor.
+6.Linting the Project:
+	- `ng lint` - Runs linting tools on Angular code.
+7.Adding Libraries:
+	- `ng add library-name` - Adds a library to the project.
+8.Updating Angular:
+	- `ng update`- Updates Angular and its dependencies.
+	
+	
+Angular 17 - Modular Architecture::
+=========================================
+Angular's modular approach architecture is a cornerstone of its design philosopy, promoting efficient, organized, and maintainable code.
+
+this approach not only aids in scalability but also enhances the development process, allowing teams to work on different aspects of an application simultaneously 
+and more effectively.
+
+1.NgModule:
+	the fundamental building block of an Angular application is the NgModule, which encapsulates components, directives, pipes, and services
+	-Now everything is standalone
+	
+2.AppModule::
+	Every Angular application used to have at least one module, the root module, typically named `AppModule` which bootstraps the application 
+	-Now everything is standalone
+	
+3.Feature Module:
+	->Developers can organize code relavent to a specific functionality into feature modules, promoting code reusability and separation of concerns.
+	
+4.lazy Loading:
+	->Modules can be lazily loaded, meaning they are loaded on demand, which can significantly improve the application's initial loading time.
+	
+5.Shared Module:
+	-> shared module allow for the declaration of components,directives, and pipes that can be used across various modules in an application.
+	
+6.Core Module:
+	-.core module is offten used to hold singletone services, global components, and other application wide resources
+	
+7.Module Imports:
+	-.Modules can imports other modules, for example feature modules often import `CommonModule` for common directives like `ngIf` and `ngFor`
+	
+8.Service Scoping:
+	->Services provided in Angular modules can be scoped to that module. This allows for singleton services or multiple instances across different modules.
+	
+9.Declarables:
+	->Components, directives, and pipes are considered declarables and must be declared in exactly one NgModule.
+	
+10.Exporting Module Content:
+	->Modules can export components, directies, and pipes so they can be used in other modules.
+	
+11.NgModule Provider:
+	->Services can be provided in modules, making them available application-wide or in the scope of the module 
+	-> Now we can do standalone injection
+
+12.Angular Libraries:
+	-> Angular's modularity extends to external libraries, allowing developers to include and use third-party modules in their applications.
+	
+13.Hierarchical Dependency Injection:
+	->Angular's dependency Injection system works in tandem with its modularity, allowing for hierarchical and efficient management of dependencies.
+	
+14.Module Federation(Micro-Frontends):
+	->Angular supports module federation, enabling large applications to be broken down into smaller, more manageable sub-applications or micro-frontends
+	
+Angular 17 - Components In Angular:
+============================================
+->Components are the fundamental building blocks of Angular applications, forming the UI controls like buttons, forms and other elements.
+
+->Each component in Angular is defined using the `@Component` decorator, which specifies the template, styles, and selector.
+
+->Components have an associated HTML template that defines the view for the UI.
+
+->The logic of a component is written in a TypeScript class, handling data and interactions.
+
+->Styles specific to a component are defined in CSS or SCSS files, allowing encapsulation of visual presentation.
+
+->Angular components utilize data binding for interaction between the TypeScript class (model) and the template (view).
+
+->By default Angular 17 Components are standalone
+
+->Components communicate with each other using `@Input` and `@Output` decorators for data sharing and event handling.
+
+->Angular provides lifecycle hooks like `ngOnInit`, `ngOnDestroy`, allowing components to run code at specific lifecycle events.
+
+->View encapsulation in components controls how css styles are applied and scoped.
+
+->Components can incorporate directives, enhancing their functionality and behavior.
+
+->components can inject services as dependencies to share data and functionality across the application.
+
+->Designed for reusability, components can be reused across different parts of the application.
+
+->Angular supports dynamic loading of components, adding flexibility to UI rendering.
+
+->using `<ng-content>` components can project content into their templates, allowing for more dynamic and reusable components.
+
+->Angular's change detection mechanism keeps the UI in sync with the underlying data model.
+
+->Components are unit-testable, making it easier to maintain and debug applications.
+
+->Components can be nested within other components, enabling complex UI Structures.
+
+-> The `@Component` decorator includes properties like `selector` `templateUrl` `StyleUrls` and `Providers`.
+
+->Angular components can integrate with third-party UI Libraries for extended functionalities
+
+
+	Angular 17 - Generate Components::
+====================================================
+1.ng g c <component name>
+2.ng g c <component name> - standalone false
+	->need to find a module for this one to work
+3.updating angular.json ->schematics ->standalone = false
+
+
+Angular 17 - No AppModule vs AppModule
+====================================================
+1.Angular 17 is standalone - which means its not dependent on Modules.
+
+2.You will NOT see AppModule file
+
+3.it is not mandatory to have AppModule
+
+4.However we can create custom modules if we want and is totally supported.
+
+5. Components, Services or Pipes, Directives can be used directly  and No need to be injected in modules
+
+Angular 17 vs Angular 16 and below
+------------------------------------
+
+1. Angular 16 and below used AppModule
+	->Its mandatory to have atleast one module
+	->AppModule
+	->main.ts ->Bootstrap  AppModule
+
+2.Angular 17 onwords 
+	->Every thing is standalone
+	->No mandatory Module is required
+	->No AppModule anymore
+	->BUT we can create our own custom modules
+	->It is backward compatible
+		->Everything that you were doing in Angular 16 is still valid
+	->main.ts ->Bootstrap AppComponent
+	ng g module <module_name> 
+	
+	
+Angular 17 - AppRoutes vs AppRoutingModule
+=============================================
+1.Angular 17 is standalone - which means its not dependencies on modules
+
+2.Hence YOU will NOT see AppRoutingModule files
+
+3.But you will see AppRotes file -> which has definitions of routes
+
+4.However we can create custom route modules if we want and is totally supported
+
+Examples:
+
+	ng generate module learning --routing
+	ng generate module customers --route customers --module learning/learning
+	
+Angular 17 - How to use components
+================================================
+1. Components can have parent/child hierarchy or just can be used independently.
+
+2. We can use the component anywhere in the project
+
+3.There is NO more dependency of modules in Angular 17 onwards [Refer episod 12 & 13]
+
+4.just use the selector name and use it as a tag name -that's it.
+
+5.We can create parent/child relationship and use the components accordongly
+
+
+Angular 17 - Component Communications [Parent/Child];
+==============================================================
+1.Component communication in Angular is crucial for building modular and scalabe applications.
+
+2. Two commonly used mechanisms for communication between components are @Input and @Output
+
+3.@Input -> receiving inputs to the component
+
+4.@Output ->Sending data from component to parent 
+
+Angular 17 - AppModule
+=================================
+1.AppModule is the root module in an Angular application
+	- It is the main entry point that is bootstrapped by Angular when the application starts.
+	- Before Angular version 17 
+Decorator:
+	- it is decorated with `@NgModule` to define metadata about the module.
+	- `@NgModule` is used to provide configuration options for the module.
+imports:
+	-The `Imports` property in `@NgModule` is used to import other Angular module.
+	-It includes modules that are needed for the application to function properly.
+Declarations:
+	-The `declarations` property in `@NgModule` is used to declare components, directives, and pipes.
+	-Components declared in this array are available for use within the module
+Bootstrap Component:
+	-The `bootstrap` property in `@NgModule` is used to specify the root component that should be 
+	-this is typically the main component of the application.
+Providers:
+	-The `providers` property in `@NgModule` is used to register services that are available throughout the module.
+	- Services added here are also available for Injection into components and other services.
+Exports:
+	-The `exports` property in `@NgModule` is used to make certain components, directive or pipes avaialable for use in the other module
+	-this is essential when you want to share components or functionality across different parts of the application.
+Schemas:
+	-The `Schemas` property in `@NgModule` is used to configure the schema that the module uses for template compilation.
+	-it is often set to `NO_ERRORS_SCHEMA` or `CUSTOM_ELEMENTS_SCHEMA` to relax template validation.
+Entry Components:
+	- the `entryComponents` property in `NgModule` is used to define components that are not referenced in the templates but are dynamically created.
+	
+--Metadata Overview:
+	- metadata in `@NgModule` includes information about how the module should be compiled, how components should be created, and how dependency injection should be configured.
+--Lazy Loading:
+	-Modules can be lazy-loaded, meaning they are loaded on-demand, reducing the initial loading time of the application,
+	-Lazy-loaded modules are defined using the `loadChildren` property in the route configuration.
+--App Module Convention:
+	-By convention, the AppModule is often named `AppModule` and is defined in a file named `app.module.ts`
+	-it is the central configuration point for the entire Angular application.
+
+Angular 17 - Generates Module:
+=============================================
+1.Generate Module Command:
+	->To generate a new module, you can use the command `ng generate module users`
+		ng g c users/add-user -m users --standalone=false
+	->This command creates a new directory for the module and generates necessary files (module file, spec file etc.)
+2.Module File(`module-name.module.ts`):
+	-the generated module file is decorated with `@NgModule`.
+	-it includes properties such as `declarations`, `imports`, `exports`, `providers` and more.
+3.Spec File(`module-name.module.spec.ts`);
+	-the generated spec file contains unit test for the module
+	-it typically includes tests for module initialization, component declarations, imports etc..
+4.Root AppModule:
+	-the root module (usually named `AppModule`) is the main module that bootstraps the angular application
+	-it often imports other feature modules.
+
+Angular 17 - How to use Modules & Components
+====================================================
+There are 3 types of modules that we can organize code into
+
+1.Export the components you want to use outside
+
+2.Import the required modules in the component
+
+3.Use the selector to map the component
+
+Angular 17 - Types of Module
+========================================
+There are 3 types of modules that we can organize code into
+
+1.Feature Modules:
+	-Feature modules are additional modules created to organize and encapsulate features of the application.
+	-they promote modularity and maintainability by grouping related components, directives, and servies.
+2.Shared Module:
+	-shared modules are modules created to share common components, directives, or pipes across multiple feature modules.
+	-they help avoid redundancy and maintain a consistent look and feel
+3.Lazy Loading:
+	-feature modules can be configured for lazy loading using the `loadChildren` property in the route configuration.
+	-lazy loading allows modules to be loaded on-demand, improving application performance.
+	
+Angular 17 - Lazy Loading Modules:
+===========================================
+Lazy Loading Modules:
+	-Lazy loading is a technique in Angular that allows modules to be loaded on-demand, improving application performance by only loading the modules when they are needed
+To generate a lazy loading module
+	- ng generate module
+Route Configuration:
+	const routes:Routes = [
+		//Other routes...
+		{path;'lazy', loadChildren:()=>import('./lazy/lazy.module').then(m=>m.LazyModule)},
+	]
+	
+	
+Angular 17 Lazy Loading Components
+==========================================
+1.Lazy loading component is a technique in Angular that allows components to be loaded on-demand, improving application performance by only loading the components when they are needed
+
+2.To generate a lazy loading component
+	ng generate component component-name`
+	ng generate component component-name --standalone false
+3.Route Configuration:
+	const routes:Routes=[
+		//Other routes...
+		{path:'add-payment', loadComponent:()=>import('./payments/list/list.component').then(c=>c.ListComponent)}
+	]
+
+Angular 17 - Data Binding
+=========================================
+1.Data binding  is a fundamental concept in Angular that allows you to establish a connection between the application's data and user interface
+
+Data Binding Types:
+	- angular supports several types of data binding: Interpolation, Property Binding, and Two-Way Binding
+1.Interpolation:(`{{}}`)
+	-One-Way data binding that allows embedding expressions in the template.
+	-It updates the view with the component's data
+2.Property Binding:(`[property]`)
+	-One-Way data binding that binds the value of a component property to an HTML element property.
+	-It updates the view with the component data.
+	-Property binding can be used to set attributes of HTML elements.
+	-It allows dynamic modification of element attributes based on component data.
+3.Event Binding(`(event)`):
+	-One-way data binding that binds an event in the template to a method in the component.
+	-It allows the component to respond to user actions.
+4.Two-Way Binding (`[(ngModel)]`):
+	-Two-Way binding  requires importing the 'FormsModule' in the module.
+	-Two-Way data binding combines property binding and event binding.
+	-It allows data to flow both from the component to the view and from view to the component.
+5.Template Reference Variables(`#var`):
+	-Template reference variables capture references to HTML elements or Angular component.
+	-They can be used to access the element or component in the template or trigger methods.
+6.Expression Context in Template:
+		-In templates, you have access to the component's properties and methods.
+		-This allows you to perform calculations, call methods, and use dynamic data in the template.
+		
+Angular 17 - Interpolation:
+=====================================
+1.Interpolation(`{{}}`):
+	-Angular's interpolation is a one-way data binding technique.
+	-it allows you to embed expressions within double curly braces {{}} in the template
+	-Interpolation facilitates the one-way flow of data from the component to the view.
+	
+2.Data Binding:
+	- Interpolation is a way to bind component data to view.
+	- it dynamically displays the value of a component property in the HTML template.
+	
+3.Expression Evalution;
+	- The expression within the double curly braces is evaluated, and its result is converted to a string for display.
+
+4.Simple Expression:
+	-Interpolation supports simple expressions, variables, and method calls.
+		-Example `{{firstName +' '+lastName}}`
+5.String Concatanation
+
+6.Implicit Conversion:
+	-Values are implicitly converted to strings for display.
+	-Example `{{user.age}}` where `user.age` is a number
+7.No Statements or Control Flow;
+	-Interpolation is meant for displaying values and simple expressions; it doesn't support statements or control flow structures.
+8.Safe Navigation Operator(`?.`):
+	-The safe navigation operator (`?.`) can be used in interpolation to avoid errors when accessing properties of potentially null or undefined values.
+	-Example `{{user?.name}}`
+9.HTML Escaping;
+	-Interpolation automatically escapes HTML characters, preventing potential security vulnerabilities.
+	-This helps avoid Cross-site Scripting (XSS) attacks
+	
+Angular 17 - Property Binding
+==============================================================
+-Property binding in angular is denoted by enclosing a property name in square brackets within  template expression
+
+-Property binding allows you to dynamically assign values to HTML elementproperties based on data or expressions to defined in the component class.
+
+-With property binding, data flows in one direction from the component class to the template, allowing you to update the properties of HTMLelements based on changes in the component data
+
+-Property binding is primary used to bind to HTML element properties, such as `src`, `href`, `disabled`, `value`, innerHTML, and others
+
+-you can use property binding to dynamically set CSS classes, styles, and other attributes of HTML element based on component data or conditions.
+
+-Angular automatically handles boolean property binding. where the presence of a property without a value implies `true` while it absence implies 'false'
+
+
+Angular 17 - Event Binding
+====================================
+-Event binding allows you to bind events of HTML elements or directives
+
+-it establishes a one-way flow of data from the component to the template
+
+-Syntax:
+	-Enclose the target event in function brackets:(()) with in the template.
+	-Implement the method in the component class
+
+Angular 17 - Two Way Data Binding
+==============================================
+-Two-Way data binding is a feature in Angular that allows synchronization of data between the component class and the HTML template.
+
+-It combines property binding (from data source to view target) and event binding (from view target to data source) into a single syntax using `[(ngModel)]`
+
+-With two-way data binding, changes made in the view (HTML template) are automatically reflected in the component class, and vice versa.
+
+-It simplifies the process of updating the UI based on user input and keeping the component class data in sync with the UI state.
+
+-Two-way data binding is commonly used with form controls such as input field, checkboxes, radio button, select dropdown, and textarea.
+
+-In the HTML template, `[(ngModel)]` is used to bind a property from the component class to a view target, enabling both data flow directions simultaneously.
+
+-To use two-way data binding, ensure that the `FormsModule` is imported in the Angular module where the component is declared as it provides support for `ngModel`
+
+
+Angular 17 - Signals Complete (Component) Guide
+=======================================================
+-A Signal is a reactive primitive that represents a value and that allows us to change that same value in a controlled way and track its changes over time.
+
+Angular 17 - Directives
+===========================================================
+-Directives in Angular are special markers on DOM elements that tell Angular to do something to those elements or their childern.
+
+-They are used to extend the functionality of HTML elements by attaching custom behavior to them.
+
+-Angular provides three types of directives
+	1.Component directives
+	2.Structural directives
+	3.Attribute directives
+1.Component directives are directives with a template. They are the most common type of directive in Angular and are declared as `@Component`.
+
+2.Structural Directives change the structure of the DOM by adding or removing elements, Examples include `@If`, `@For`, and `@switch`
+
+3.Attribute directives change the appearance or behavior of an element, component or another directives Example include `ngStyle`, `ngClass`, and `ngModel`.
+
+-Directives can be used in Angular templates to manipulate the DOM, apply styles, handle events, and more.
+
+-Angular also allows you to create custom directives to encapsulate reusable behavior and apply it to multiple elements in your application
+
+-Custom directives can be used to enhance the functionality of your application by encapsulating complex behavior into resuable components.
+
+
+Angular 17 - Structural Directives
+==================================================================
+-Structural directives are responsible for altering the structure of the DOM by adding or removing elements based based on certain conditions.
+
+-Structural directives are preceded by an (@) in the template syntax, distinguishing them from attribute directives.
+
+-Common Structural Directives:
+	-@If -conditionally adds or removes an element from the DOM based on the truthiness of an expression.
+	-@For -Generates multiple copies of an element based on an iterable collection such as an array
+	-@Switch - Conditionally displays one element from a set of elements based on matching cases.
+	
+Note: Earlier we used to write *ngIf, *ngFor and *ngSwitch - WE CAN STILL use them
+
+Angular 17 - Attribute Directives
+=======================================================================
+-Attribute directives are responsible for altering the behavior or appearance of DOM elements.
+
+-They do so by manipulating the element's attributes or applying custom behavior to the element.
+
+-Attribute directives are applied to HTML elements as attributes prefixed with directive selector.
+
+-They can be used with or without binding syntax.
+
+* Common Attribute Directives:
+	-ngStyle: Dynamically applies inline CSS styles to elements based on expression evalution.
+	-ngClass; Dynamically adds or removes CSS classes based on expression evalution.
+	-ngModel: Provides two-way data binding functionality for form controls
+	
+
+Angular 17 - Custom Directives
+===========================================
+-Custom directives in Angular are classes that add custom behavior to elements in the Angular application
+
+-They are core feature of Angular, providing a way to extend HTML with new attributes and tags, encapsulating reusable behaviors.
+
+-Custom directives can be broadly categorized into 3 types: attribute directives, structural directives and components.
+
+
+Angular 17 - Angular Pipes
+=====================================
+Overview of Angular Pipes:
+
+	- Transformation Logic: Pipes in Angular are used to transform data in the template, providing a clean way to apply common transformations and formatting.
+	
+	-Built In Pipes: Angular provides several built-in pipes like DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, and JsonPipe.
+	
+	-Custom Pipe: Developers can create custom pipes to handle specific transformations that are not covered by built-in pipes.
+	
+Features of Angular Pipes:
+
+	-Pure Pipes: By default, pipes are pure, meaning they only execute when the input data changes. This ensures performance optimization.
+	
+	-Impure Pipes: if a pipe's logic depends on more than just its input parameters (e.g.. extrenal data or states), it can be maked as impure. Impure pipes run on every change
+	 detection cycle.
+	 
+	-Chaining Pipes: Multiple pipes can be chained together in a template to apply multiple transformations in sequence.
+	
+	-Parameterization: Pipes can accept optional parameters to modify their behavior, such as formatting options for DatePipe or CurrencyPipe
+	
+	-Custom Pipe Creation: Custom pipes can be created by implementing the PipeTransform interface and defining  the transformation logic in the transform method
+
+	-Standalone and Module Declarations: Custom pipes can be declared as standalone or within angular modules. Standalon pipes are useful for modular and reusable components
+
+Angular 17 - Built In Pipes:
+=================================================
+-Tranformation Logic: Built -in pipes in Angular are used to apply common data tranformations and formatting directly within templates.
+
+-Ease of Use: These pipes are simple to use and can handle most common data formatting needs without requiring additional code.
+
+-Parameterization: Many built-in pipes accepts parameters to customize their behavior, providing flexibility for different use case.
+
+-Performance Optimization: Angular's buil-in pipes are optimized for performance and by default are pure meaning they only execute when the input data changes.
+
+Built In Pipes
+----------------
+		-1.DatePipe: Formats a data value according to local rules.
+		-2.UpperCasePipe: Tranforms text to uppercase.
+		-3.LowerCasePipe: Tranforms text to lowercase.
+		-4.DecimalPipe: Formats a number with specified decimal places.
+		-5.CurrencyPipe: Formats a number as currency
+		-6.PercentPipe: formats number as a percentage
+		-7.JsonPipe: converts an object to a JSON string for display
+		-8.SlicePipe:Slices an array or string and returns a subset of it.
+		-9.KeyValuePipe: Transforms an object into an array of key-value pairs.
+		-10.AsyncPipe: Unwraps a value from a Promise or Observable	asynchronously.
+		
+		
+Angular 17 - Pure Pipe
+================================
+1.Definition: A pure pipe 	is a pipe that only executes when input data changes. Angular checks the input for changes using strict equality.
+
+2.Peformance: Pure pipes are optimized for performance because they only execute when necessary, minimizing unnecessary computations.
+
+3.Default Behavior: All pipes in Angular are pure by default unless explicity marked as impure 
+
+4.Use Cases: Ideal for senarios where the transformation logic dependency soley	on the input data and doesn't involve any external or frequently changing dependencies
+
+5.Examples: Formatting a date, converting text to uppercase or lowercase
+
+Angular 17 - Impure Pipe:
+===================================
+1.Definition: An impure pipe is a pipe that executes on every change detection cycle, regardless of whether its input data changes.
+
+2.Performance: Impure pipes can impact performance negatively because they are re-evaluated frequently.
+
+3.Marking as Impure: To create 	an impure pipe, set the pure property to false in the @Pipe decorator.
+
+4.Use Cases: Suitable for scenarios where the transformation logic depends on external factors or frequently changing data, such as user inputs, time intervals, or dynamic data sources.
+
+5.Example: Filtering a list based on user input which change frequently.
+
+	
+
+Angular 17 - Crud Application
+============================================
+step1 : - Create Angular 17 Project
+
+step2 : - Install Bootstrap
+
+step3 : - Create Post Module
+
+Step4 : - Create Components for Module
+
+Step5 : - Create routes
+
+Step6 : - Create Interface 
+
+Step7 : - Create Service
+
+step8 : - Update Components logic and template
+
+step9 : - Export HTTP Client
+
+https://www.youtube.com/watch?v=4qFP0mmV99M   --- angular 17 reference;;
+
+
+Message Box Application :
+=====================================
+step1 : - Create angular 17 project
+	ng new message-app
+step2 : - Install tailwindcss
+	npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+
+step3 : - install NGXS management store
+	npm i @ngxs/store
+	app.config.ts ----
+		importProvidersFrom(NgxsModule.forRoot())
+Step4: - Install ngx toastr
+npm i ngx-toastr
+
+NGXS::: 
+======================
+
+1.NGXS is a state management pattern + library for Angular. It acts as a single source of truth for your application's state, providing simple rules for predictable state mutations.
+
+Overview
+There are 4 major concepts to NGXS:
+
+Store: Global state container, action dispatcher and selector
+
+Actions: Class describing the action to take and its associated metadata
+
+State: Class definition of the state
+
+Selects: State slice selectors
+
+These concepts create a circular control flow traveling from a component dispatching an action, to a store reacting to the action, back to the component through a state select.
+
+
+ng new --standalone --inline-template --inline-style
+
+ng add @angular/material
+
+
+https://github.com/Remix-Design/RemixIcon:;;; Messages App
+
+Create Backend Rest API Using Node
+=====================================
+create folder backend
+step1 : npm init -y 
+step2: npm i typescript ts-node
+step3: npx tsc --init - this will generates tsconfig.json file
+tsconfig.json:
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib":["ES6"],
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"]
+}
+
+Step4: npm i mongoose express cors @types/mongoose @types/express @types/cors
+	
+What Upgrade options are Available
+
+	Rewrite - Big Bang
+	ngUpgrade - UpgradeModule
+	Angular elements
+	
+	
+Please follow these preparation steps it the files identified before migrating with ngUpgrade.
+
+step1: App Contains $rootScope, refactor into services.
+
+step2: App contains 6 javascript files, convert to TypeScript
+
+step3: App contains 2 controllers, convert to Angular js to component directives.
+
+	src/app/docs.js
+		- patterns found:
+			$rootScope
+			JavaScript
+			Controller
+			
+Desktop App 
+
+Automated template Conversion
+	- Syntactically transform AngularJS html template to Angular
+		ng-src="{{mv.url}}"     -----------------[src]="mv.url"
+		
+Enhanced Analysis:
+	- AST parsing improves accuracy of analysis with enhanced search criteria and recommandation reporting.
+	
+What's next for ngMigration Assistant?
+
+	- Angular is fast, simple, and built on the modern web
+		components     TypeScript
+Component based Architecture 
+	Components	
+		Standardized
+		Simpler
+		Rule of One
+		Component directives
+	Directive
+		-- Markers on DOM elements that are compiled to manipulat HTML elements and its children
+		
+			.directive(name, function){
+				return{
+					scope:{},
+					bindToController;{},
+					controller:function(){},
+					template:""
+				}
+			}
+			
+	Component Directive:
+		--Special directives that define their own templates, controllers, and and i/o bindings
+		Examples:
+				.component(name, options){
+					controller;function(){},
+					bindings:{},
+					templateUrl:"",
+				}
+				
+	Angular Component:
+		- defines a class associated with an HTML template that defines a view to be displayed in the UI
+			@Component({
+			selector:"",
+			templateUrl:'',
+			styleUrl:""
+			})
+TypeScript:
+=============
+	-*.js  ----> *.ts
+	- Enhanced error reporting
+	-.Reduced runtime errors
+	-.Faster time to market
+	
+ngMigration Forum
+--------------------
+	-A community hub for learning about migrating
+	
+	https://github.com/angular/ngMigration-Forum/wiki
